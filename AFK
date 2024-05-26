@@ -1,0 +1,63 @@
+local VirtualUser = game:GetService("VirtualUser")
+local StarterGui = game:GetService("CoreGui")
+
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Parent = StarterGui
+local Frame = Instance.new("Frame")
+Frame.Parent = ScreenGui
+local TextBox1 = Instance.new("TextLabel")
+TextBox1.Parent = Frame
+local TextBox2 = Instance.new("TextLabel")
+TextBox2.Parent = Frame
+local TextBox3 = Instance.new("TextLabel")
+TextBox3.Parent = Frame
+
+Frame.BackgroundColor3 = Color3.fromRGB(17, 17, 17)
+    Frame.Style = "RobloxRound"
+        Frame.Active = true
+        Frame.Draggable = true
+    Frame.Position = UDim2.new(0.442,0,0.427,0)
+Frame.Size = UDim2.new(0,340,0,170)
+
+TextBox1.Text = "z7n"
+    TextBox1.Active = true
+        TextBox1.TextColor3 = Color3.fromRGB(255, 50, 255)
+            TextBox1.TextSize = 27
+            TextBox1.BackgroundTransparency = 1
+        TextBox1.Font = Enum.Font.RobotoMono
+    TextBox1.Size = UDim2.new(0,200,0,50)
+TextBox1.Position = UDim2.new(0.206,0,0.272,0)
+
+TextBox2.Text = "Made by z7n"
+    TextBox2.Active = true
+        TextBox2.TextColor3 = Color3.fromRGB(255, 50, 255)
+            TextBox2.TextSize = 24
+            TextBox2.BackgroundTransparency = 1
+        TextBox2.Size = UDim2.new(0,200,0,50)
+    TextBox2.Font = Enum.Font.RobotoMono
+TextBox2.Position = UDim2.new(-0.142,0,-0.118,0)
+
+TextBox3.Text = " "
+    TextBox3.Active = true
+        TextBox3.TextColor3 = Color3.fromRGB(255, 0, 0)
+            TextBox3.TextSize = 38
+            TextBox3.BackgroundTransparency = 1
+        TextBox3.Size = UDim2.new(0,200,0,50)
+    TextBox3.Font = Enum.Font.RobotoMono
+TextBox3.Position = UDim2.new(0.203,0,0.437,0)
+
+if not game:GetService("Players").LocalPlayer then
+    TextBox3.Text = "STATUS: INACTIVE"
+        TextBox3.TextColor3 = Color3.fromRGB(255, 0, 0)
+    error("Failed to terminate Roblox's Anti AFK System")
+        else
+    TextBox3.Text = "STATUS: ACTIVE"
+    TextBox3.TextColor3 = Color3.fromRGB(0, 255, 0)
+        game:GetService("Players").LocalPlayer.Idled:connect(function()
+            VirtualUser:CaptureController()
+        VirtualUser:ClickButton2(Vector2.new())
+    end)  
+end
+
+warn("[*] ANTI AFK ENABLED")
+warn("[*] Made by @evanaleda")
